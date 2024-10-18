@@ -1,0 +1,26 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+	<PropertyGroup>
+		<TargetFrameworks>net40;net45</TargetFrameworks>
+		<ImplicitUsings>disable</ImplicitUsings>
+		<Nullable>disable</Nullable>
+		<RootNamespace>Ancestor.Oralce</RootNamespace>
+	</PropertyGroup>
+
+	<!-- net 4.0-->
+	<ItemGroup Condition="'$(TargetFramework.TrimEnd(`0123456789`))' == 'net'">
+		<Reference Include="Oracle.DataAccess">
+			<HintPath>..\libs\Oracle.DataAccess.dll</HintPath>
+			<Private>false</Private>
+			<SpecificVersion>false</SpecificVersion>
+		</Reference>
+	</ItemGroup>
+	<Choose>
+		<When Condition="'$(IsLocalDev)' == 'true'">
+			<ItemGroup>
+				<ProjectReference Include="..\..\Ancestor2.Core\Ancestor2.Core\Ancestor2.Core.csproj" />
+			</ItemGroup>
+		</When>
+	</Choose>
+
+</Project>
